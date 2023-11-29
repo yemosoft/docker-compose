@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  rethinkdb:
+    image: rethinkdb:latest
+    container_name: rethinkdb
+    ports:
+      - "8080:8080" # Web UI
+      - "28015:28015" # RethinkDB client driver port
+      - "29015:29015" # RethinkDB intracluster communication port
+    volumes:
+      - "./data:/data" # Mounting a volume for persistent data
+    environment:
+      RETHINKDB_DB: "test" # Specify your default database name
+      RETHINKDB_CACHE_SIZE: 512 # Adjust as needed
+      RETHINKDB_CLUSTER_PORT: 29015
+      RETHINKDB_CLUSTER_ADDRESS: "rethinkdb"
+      RETHINKDB_ADMIN_PASSWORD: "password" # Set your admin password
+      RETHINKDB_USER: "username" # Set a username for authentication
+      RETHINKDB_PASSWORD: "password" # Set a password for authentication

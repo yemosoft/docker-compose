@@ -24,7 +24,7 @@ services:
     image: addono/bull-board
     restart: always
     ports:
-      - 3000:3000
+      - 3050:3000
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
