@@ -9,9 +9,6 @@ This repository contains configurations and setups for various services and tool
 - **nginxproxymanager:**
   - Contains configurations or files related to Nginx Proxy Manager.
 
-- **last:**
-  - The purpose of this directory is not clear from the name alone.
-
 - **portainer:**
   - Contains configurations or files related to Portainer.
 
@@ -26,10 +23,6 @@ This repository contains configurations and setups for various services and tool
 
 - **vault:**
   - Contains configurations or files related to HashiCorp Vault.
-
-
-- **.env:**
-  - Configuration file, may contain environment variables or sensitive information.
 
 ## Usage
 
