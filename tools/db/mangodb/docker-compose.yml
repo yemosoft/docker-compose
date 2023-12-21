@@ -4,7 +4,9 @@ services:
     image: mongo
     container_name: my-mongodb
     ports:
-      - "27017:27017"
+      - "0.0.0.0:27017:27017"
+    networks:
+      - MONGO
     volumes:
       - ./mongodb-data:/data/db
     environment:
@@ -21,6 +23,12 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_PORT: "27017"
     ports:
-      - "8081:8081"
+      - "0.0.0.0:8081:8081"
+    networks:
+      - MONGO
     depends_on:
       - mongodb
+
+networks:
+  MONGO:
+    name: MONGO
