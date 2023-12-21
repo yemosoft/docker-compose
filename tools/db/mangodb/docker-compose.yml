@@ -6,9 +6,20 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./mongodb-data:/data/db
-
+      - mongodb-data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: myadmin
-      MONGO_INITDB_ROOT_PASSWORD: myadminpassword
-      MONGO_INITDB_DATABASE: mydatabase
+      MONGO_INITDB_ROOT_USERNAME: youradminusername
+      MONGO_INITDB_ROOT_PASSWORD: youradminpassword
+      MONGO_INITDB_DATABASE: yourdatabase
+
+  mongosh:
+    image: mongo
+    container_name: my-mongosh
+    depends_on:
+      - mongodb
+    entrypoint: mongosh
+    command: --host mongodb -u youradminusername -p youradminpassword --authenticationDatabase admin
+
+volumes:
+  mongodb-data:
+    driver: local
