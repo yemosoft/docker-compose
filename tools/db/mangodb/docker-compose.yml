@@ -6,21 +6,21 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongodb-data:/data/db
+      - ./mongodb-data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: myadmin
       MONGO_INITDB_ROOT_PASSWORD: myadminpassword
       MONGO_INITDB_DATABASE: mydatabase
 
-  compass:
-    image: mongo/mongosh
-    container_name: my-compass
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: myadmin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: myadminpassword
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - "8081:8081"
     depends_on:
       - mongodb
-    command: mongosh --host mongodb -u myadmin -p myadminpassword --authenticationDatabase admin
-    links:
-      - mongodb
-
-volumes:
-  mongodb-data:
-    driver: local
