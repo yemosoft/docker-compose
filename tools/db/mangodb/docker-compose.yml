@@ -25,6 +25,8 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: adminpassword
     networks:
       - MONGO
+    depends_on:
+      - mongodb
 
 networks:
   MONGO:
