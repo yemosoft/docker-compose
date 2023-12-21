@@ -8,17 +8,18 @@ services:
     volumes:
       - mongodb-data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: youradminusername
-      MONGO_INITDB_ROOT_PASSWORD: youradminpassword
-      MONGO_INITDB_DATABASE: yourdatabase
+      MONGO_INITDB_ROOT_USERNAME: myadmin
+      MONGO_INITDB_ROOT_PASSWORD: myadminpassword
+      MONGO_INITDB_DATABASE: mydatabase
 
-  mongosh:
-    image: mongo
-    container_name: my-mongosh
+  compass:
+    image: mongo/mongosh
+    container_name: my-compass
     depends_on:
       - mongodb
-    entrypoint: mongosh
-    command: --host mongodb -u youradminusername -p youradminpassword --authenticationDatabase admin
+    command: mongosh --host mongodb -u myadmin -p myadminpassword --authenticationDatabase admin
+    links:
+      - mongodb
 
 volumes:
   mongodb-data:
