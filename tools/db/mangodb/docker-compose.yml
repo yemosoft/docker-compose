@@ -20,7 +20,7 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: myadmin
       ME_CONFIG_MONGODB_ADMINPASSWORD: myadminpassword
-      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_SERVER: mongodb
       ME_CONFIG_MONGODB_PORT: "27017"
     ports:
       - "0.0.0.0:8081:8081"
