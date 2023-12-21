@@ -27,6 +27,7 @@ services:
       - MONGO
     depends_on:
       - mongodb
+    command: ["sh", "-c", "sleep 10 && node app"]
 
 networks:
   MONGO:
